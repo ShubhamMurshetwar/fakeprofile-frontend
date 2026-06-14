@@ -2,6 +2,7 @@
 // FakeGuard — auth.js
 // FINAL FIXED VERSION (No HTML changes needed)
 // ============================================
+const API_URL = "https://fake-profile-detection-s2md.onrender.com";
 
 // Apply saved theme on load
 (function () {
@@ -60,18 +61,18 @@ async function handleSignIn(event) {
   }
 
   try {
-    const API_URL = "https://fake-profile-detection-s2md.onrender.com";
+    
 
-fetch(`${API_URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: email,
-        password: pass
-      })
-    });
+const res = await fetch(`${API_URL}/login`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    email: email,
+    password: pass
+  })
+});
 
     const data = await res.json();
 
@@ -117,7 +118,6 @@ async function handleSignUp(event) {
   }
 
   try {
-    console.log("Calling API:", `${API_URL}/signup`);
     const res = await fetch(`${API_URL}/signup`, {
       method: "POST",
       headers: {
