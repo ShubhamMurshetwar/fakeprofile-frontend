@@ -1,3 +1,5 @@
+const API_URL = "https://fake-profile-detection-s2md.onrender.com";
+
 // ============================================
 // FakeGuard — analyze.js (FINAL VERSION)
 // Backend + Dataset + ML Integrated
@@ -13,7 +15,7 @@ async function fetchSuggestions() {
   }
 
   try {
-    const res = await fetch(`http://127.0.0.1:5000/suggest-usernames?q=${input}`);
+    const res = await fetch(`${API_URL}/suggest-usernames?q=${input}`);
     const suggestions = await res.json();
 
     const box = document.getElementById('username-suggestions');
@@ -48,7 +50,7 @@ async function fetchProfileData() {
   document.getElementById('loading-section').classList.remove('hidden');
 
   try {
-    const res = await fetch("http://127.0.0.1:5000/fetch-profile", {
+    const res = await fetch(`${API_URL}/fetch-profile`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -118,7 +120,7 @@ async function runAnalysis() {
   document.getElementById('loading-section').classList.remove('hidden');
 
   try {
-    const res = await fetch("http://127.0.0.1:5000/predict", {
+    const res = await fetch(`${API_URL}/predict`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
