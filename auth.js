@@ -117,6 +117,7 @@ async function handleSignUp(event) {
   }
 
   try {
+    console.log("Calling API:", `${API_URL}/signup`);
     const res = await fetch(`${API_URL}/signup`, {
       method: "POST",
       headers: {
@@ -140,8 +141,9 @@ async function handleSignUp(event) {
     }
 
   } catch (error) {
+    console.error("Signup Error:", error);
     showError("su-error", "Server connection failed.");
-  }
+}
 }
 
 // --------------------
